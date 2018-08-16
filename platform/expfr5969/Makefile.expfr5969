@@ -1,0 +1,86 @@
+# msp-exp430fr5969 platform makefile 
+
+ifndef CONTIKI
+  $(error CONTIKI not defined! You must specify where CONTIKI resides!)
+endif
+
+CLEAN += symbols.c symbols.h *.elf *.expfr5969 *.hex Log
+
+CONTIKI_TARGET_SOURCEFILES += contiki-expfr5969-platform.c \
+	button-sensor.c \
+	wur-sensor.c 
+
+ARCH=node-id.c rtcc.c leds.c \
+	 leds-arch.c \
+	 uart1.c slip_uart1.c uart1-putchar.c \
+	 sx1276-arch.c sx1276.c spi.c  
+
+
+CONTIKI_TARGET_DIRS = . dev radio tools
+
+ifndef CONTIKI_TARGET_MAIN
+CONTIKI_TARGET_MAIN = contiki-expfr5969-main.c
+endif
+
+CONTIKI_TARGET_SOURCEFILES += $(ARCH) 
+
+MCU=msp430fr5969
+
+# Platform has a MSP430X MCU with 20-bit support
+CPU_HAS_MSP430X=1
+
+### Unless the example dictates otherwise, build with code size optimisations
+ifndef SMALL
+  SMALL = 1
+endif
+
+ifdef NODE_ID
+CFLAGS+=-DNODE_ID=$(NODE_ID)
+endif # NODE_ID
+
+ifdef MAC_ID
+CFLAGS+=-DMAC_ID=$(MAC_ID)
+endif # MAC_ID
+
+LDFLAGS+= -lm
+TARGET_LIBFILES += -lm
+
+help:
+	@echo
+	@echo "*** Contiki OS for EXPFR5969 board ***"
+	@echo "***        Some useful make commands         ***"
+	@echo
+	@echo "Save target"
+	@echo "	>> make TARGET=expfr5969 savetarget"
+	@echo "Compile a project"
+	@echo "	>> make all"
+	@echo "Clean up any compiled object files, target files, etc."
+	@echo "	>> make clean"
+	@echo "Compile a project and program the board with it"
+	@echo "	>> make <project>.upload"
+	@echo "Compile a project with node_id set to <id> and program the board"
+	@echo "	>> make <project>.upload NODE_ID=<id>"
+	@echo "Debugs a project using standard gdb"
+	@echo
+	@echo "For more information, and to see how to use drivers and peripherals,"
+	@echo "e.g., button, LEDs, see the folders in examples/expfr5969"
+	@echo "and the files in platform/expfr5969 and cpu/msp430"
+	@echo
+
+include $(CONTIKI)/cpu/msp430/Makefile.msp430
+
+contiki-$(TARGET).a: ${addprefix $(OBJECTDIR)/,symbols.o}
+#   $(AR) rcf $@ $^
+
+%.upload: %.hex
+	@echo "Programming EXPFR5969 with $< using MSP-FET Flash Emulation tool"
+	/Users/rajeev/MSPFlasher_1.3.10/MSP430Flasher -n msp430fr5969 -e ERASE_MAIN -w $< -v -z [VCC]
+
+%.upload-clean: %.hex
+	@echo "Programming EXPFR5969 with $< using MSP-FET"
+	msp430flasher -n msp430fr5969 -w $< -v -z [VCC]
+
+MODULES += core/net \
+		   core/net/mac \
+		   core/net/mac/wurmac \
+		   core/net/llsec 

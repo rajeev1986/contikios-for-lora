@@ -1,0 +1,33 @@
+/*
+ * Author:   Rajeev Piyare <rajeev.piyare@hotmail.com>
+ * 
+ */
+
+/* Refer to the schematics for the PIN Diagram for the sensor mote*/
+/* Peripheral mapping */
+
+LED RED      P3.3 
+LED GREEN    P3.4 
+
+Button S1    P3.1
+
+Serial port  UCA1
+UART TX		 P2.5
+UART RX		 P2.6
+
+
+/* SX1276 Radio Driver SPI Connections */
+
+LoRa SPI	UCA0
+
+LoRa CS     P3.0
+LoRa DIO_0	P1.3
+LoRa RESET	P1.4
+LoRa MOSI	P2.0 (UCA0SIMO)
+LoRa MISO   P2.1 (UCA0SOMI)
+LoRa SCLK	P1.5 (UCA0CLK)
+
+
+/* Wake-up Receiver Connections */
+MSP Interrupt P4.5
+
