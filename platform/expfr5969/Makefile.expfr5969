@@ -82,5 +82,4 @@ contiki-$(TARGET).a: ${addprefix $(OBJECTDIR)/,symbols.o}
 
 MODULES += core/net \
 		   core/net/mac \
-		   core/net/mac/wurmac \
 		   core/net/llsec 

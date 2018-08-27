@@ -38,8 +38,8 @@
 
 #include "dev/button-sensor.h"
 
-//SENSORS(&button_sensor);
-SENSORS(&button_sensor, &wur_sensor);
+SENSORS(&button_sensor);
+// SENSORS(&button_sensor, &wur_sensor);
 
 void
 init_platform(void)

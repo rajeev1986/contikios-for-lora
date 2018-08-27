@@ -2,7 +2,7 @@ ifndef TARGET
 TARGET=expfr5969
 endif
 
-CONTIKI = ../../../..
+CONTIKI = ../../..
 
 CONTIKI_PROJECT = example-broadcast example-broadcast.hex
 
