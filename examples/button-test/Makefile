@@ -5,7 +5,7 @@ endif
 CONTIKI_PROJECT = button-test button-test.hex
 
 all: $(CONTIKI_PROJECT)
-CONTIKI = ../../..
+CONTIKI = ../..
 CONTIKI_WITH_RIME = 1
 
 # Enable 20-bit instruction support

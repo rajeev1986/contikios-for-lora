@@ -5,7 +5,7 @@ endif
 CONTIKI_PROJECT = receiver receiver.hex
 
 all: $(CONTIKI_PROJECT)
-CONTIKI = ../../../..
+CONTIKI = ../..
 CONTIKI_WITH_RIME = 1
 
 
