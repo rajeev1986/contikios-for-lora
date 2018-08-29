@@ -114,7 +114,7 @@ void OnRxDone( uint8_t *payload, uint16_t size, int8_t rssi, int8_t snr )
   rx_last_snr = snr;
   rx_last_rssi = rssi;
 	 
-	PRINTF("Incoming MSG: Size:%d bytes, RSSI:%d, SNR: %d\n", rx_msg_size, rssi, snr);
+	printf("Incoming MSG: Size: %d bytes, RSSI: %d, SNR: %d\n", rx_msg_size, rssi, snr);
 
   process_poll(&sx1276_process);
   sx1276_radio_on();
