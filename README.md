@@ -14,8 +14,8 @@ Piyare, R., Murphy, A. L., Magno, M., & Benini, L. (2018, October). **On-Demand 
 
 Piyare, R., Murphy, A. L., Magno, M., & Benini, L. (2018, October). **KRATOS: An Open Source Hardware-Software Platform for Rapid Research in LPWANs**. In 2018 14th International Conference on Wireless and Mobile Computing, Networking and Communications (WiMob) (pp. 1-4). IEEE. * [PDF3]
 
-[PDF1]: <http://www.rajeevpiyare.com/wp-content/uploads/2018/11/sensors-18-03718.pdf>
+[PDF1]: <https://www.rajeevpiyare.com/publications/sensors-18-03718.pdf>
 
-[PDF2]: <http://www.rajeevpiyare.com/wp-content/uploads/2018/09/on-demand-tdma.pdf>
+[PDF2]: <https://www.rajeevpiyare.com/publications/on-demand-tdma.pdf>
 
-[PDF3]: <http://www.rajeevpiyare.com/wp-content/uploads/2018/09/kratos.pdf>
+[PDF3]: <https://www.rajeevpiyare.com/publications/kratos.pdf>
